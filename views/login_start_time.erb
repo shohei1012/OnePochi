@@ -1,0 +1,22 @@
+
+<form class="border rounded bg-white form-login" action="/login_start_time" method="post">
+    <h1 class="text- h3 my-3">出勤打刻ページ</h1>
+      <div class="btn btn-secondary text-white rounded-pill">
+        <span id="view_clock" name="#"></span>
+       </div>
+       <%# 日付変えたい時用のダミー %>
+
+       <%# <input type="date" name="date" > %>
+      <div class="form-group pt-3">
+          <input type="text" class="form-control rounded-pill"  name="user_no"  placeholder="社員番号">
+      </div>
+      <div class="form-group">
+          <input type="password" class="form-control rounded-pill"  name="password" placeholder="パスワード">
+      </div>
+      <div class="form-group">
+    <textarea  class="form-control" name="start_comment" placeholder="今日の意気込み（任意）"></textarea>
+          <%# <input type="text" class="form-control rounded-pil" name="start_comment" placeholder="今日の意気込み（任意）"> %>
+      </div>
+      <button type="submit" class="btn btn-outline-info  rounded-pill px-5 my-4" id="alret-btn">登録</button>
+</form>
+      <a class="#" href="/index"><button type="submit" class="btn btn-outline-secondary rounded-pill px-3 my-4">トップページ</button></a>

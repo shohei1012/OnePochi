@@ -1,0 +1,23 @@
+
+<%# # リアルタイム表示 %>
+      <div class="d-block">
+        <a href="/admin_login" class="opacity-25">管理者ページへ</a>
+      </div>
+        <br>
+      <%# <div class="btn btn-secondary  text-white rounded-pill"> %>
+        <span id="view_clock" name="#"></span>
+       <%# </div> %>
+        <div class="input-group-prepend d-flex justify-content-center ">
+                <a class="text-decoration-none" href="/login_start_time"><button type="submit" class="input-group-text btn btn-outline-info p-5 m-3" id="end_btn">出勤</button></a> 
+            <div class="input-group-prepend">
+                <a class="text-decoration-none" href="/login_end_time"><button type="submit" class="input-group-text btn btn-outline-danger p-5 m-3" id="end_btn">退勤</button></a> 
+            </div>
+        </div>
+        <h6>-社員の密かなつぶやき-</h6>
+      <div class="btn btn-secondary text-white rounded-pill mb-3">
+        <%= @comments.sample['comment'] %>
+        <%# <span id="view_clock" name="#"></span> %>
+       </div>
+       <div class="mx-auto" >
+       <a class="text-decoration-none" href="/random"><button type="button" class="btn btn-outline-light   rounded-pill" id="end_btn"><h5 >-ひそひそする-</button></h5></a>
+       </div>

@@ -1,0 +1,61 @@
+
+  <h1><%= @admin_name %>のページ</h1>
+        <% if session[:user] %>
+          <form class=" text-right " action="/signout" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input  type="submit" value="サインアウト">
+          </form>
+        <% end %><%# <form class="border rounded bg-white form-time-table" action="/admin_user_list" method="post" > %>
+<form class="mb-3" action="/admin_user_list" method="post">
+      <%# <select name="ranking" class="rounded-pill">
+        <option value="hasegawa">hasegawa</option>
+        <option value="heycha">heycha</option>
+        <option value=" 蒲焼焼タロー"> 蒲焼焼タロー</option>
+        <option value=" てんちょー"> てんちょー</option>
+      </select>   %>
+          <input type="text" class="rounded-pill p-3" style="max-width: 200px;"  name="user_id"  placeholder="社員名の検索">
+          <input type="submit" class="btn btn-primary  rounded-pill px-3 m-2" value="検索">
+</form>
+<div class="border rounded bg-white form-time-table">
+
+       <div class=d-flex>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-light">
+            <th scope="col">日</th>
+            <th scope="col">出勤</th>
+            <th scope="col">出勤コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--業務日報データをリスト　表示  -->
+          <% @starts.each do |start| %> 
+    <tr>
+            <th scope="row"><%= start['date'] %></th>
+            <td><%= start['start_time'] %></td>
+            <td><%= start['start_comment'] %></td>
+        <% end %>
+    </tr>
+        </tbody>
+      </table>      
+      <%# end_table %>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-light">
+            <th scope="col">退勤</th>
+            <th scope="col">退勤コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--業務日報データをリスト　表示  -->
+        <% @ends.each do |en| %> 
+    <tr>
+            <td><%= en['end_time'] %></td>
+            <td><%= en['end_comment'] %></td>
+        <% end %>
+    </tr>
+        </tbody>
+      </table>
+<%# </form> %>
+</div>
+  <a class="#" href="/index"><button type="submit" class="btn btn-outline-secondary   rounded-pill px-3 my-4 ">トップページ</button></a>

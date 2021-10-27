@@ -1,0 +1,43 @@
+   
+<% if session[:user] %>
+  <form class=" text-right " action="/signout" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input  type="submit" value="サインアウト">
+  </form>
+<% end %>  
+<div class="border rounded bg-white form-time-table">
+      <%# 名前表示 %>
+      <h1 class="h3 my-3"><%= @user %> </h1>
+      <%# <select class="form-control rounded-pill mb-3" id="exampleFormControlSelect1">
+        <option>2021/9</option>
+      </select> %>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-light">
+            <th scope="col">日</th>
+            <th scope="col">出勤</th>
+            <th scope="col">退勤</th>
+            <th scope="col">出勤コメント</th>
+            <th scope="col">退勤コメント</th> <!--button用ダミー  -->
+          </tr>
+        </thead>
+        <tbody>
+        <!--業務日報データをリスト　表示  -->
+        <% @starts.each do |start| %> 
+      <tr>
+            <th scope="row"><%= start['date'] %></th>
+            <td><%= start['start_time'] %></td>
+            <td><%= start['start_comment'] %></td>
+        <% end %>
+          </tr>
+      <tr>
+        <% @ends.each do |en| %> 
+            <td><%= en['end_time'] %></td>
+            <td><%= en['end_comment'] %></td>
+        <% end %>
+          </tr>
+        </tbody>
+      </table>
+</div> 
+      <a class="#" href="/index"><button type="submit" class="btn btn-outline-secondary rounded-pill px-3 my-4">トップページ</button></a>
+
