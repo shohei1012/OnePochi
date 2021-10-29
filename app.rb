@@ -37,7 +37,7 @@ client = PG::connect(
 # ホーム画面 #
 ############
 
-get '/index' do
+get '/' do
     @comments = client.exec_params("SELECT comment FROM randoms").to_a
     return erb :index
 end
@@ -51,7 +51,7 @@ post '/random' do
     VALUES ($1)",
     [comment]
     )     
-    return redirect '/index'
+    return redirect '/'
 end
 
 ##########
@@ -83,7 +83,7 @@ post '/login_start_time' do
         VALUES ($1, $2, $3, $4)",
         [user_id, date, start_time, start_comment]
         )     
-        return redirect "/index"
+        return redirect "/"
     end
 end
 
@@ -118,7 +118,7 @@ post '/login_end_time' do
         [user_id, date, end_time, end_comment]
         )     
     end
-    return redirect "/index"
+    return redirect "/"
 end
 
 ################
