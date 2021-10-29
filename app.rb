@@ -1,9 +1,9 @@
-require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra'
+# require 'sinatra/reloader'
 require 'sinatra/cookies'
-require 'pg'
-require 'date'
-require 'time'
+# require 'pg'
+# require 'date'
+# require 'time'
 
 #############################################
 # 使うgemはGemfileにまとめ、bundleの機能を使う #
@@ -27,11 +27,16 @@ enable :sessions
 time = Time.now 
 # flash[:danger] = "登録されていません。"
 
-client = PG::connect(
-    :host => "localhost",
-    :user => ENV.fetch("USER", "heycha"), :password => '',
-    :dbname => "product")
-
+# client = PG::connect(
+#     :host => "localhost",
+#     :user => ENV.fetch("USER", "heycha"), :password => '',
+#     :dbname => "product")
+    client = PG::connect(
+        :host => ENV.fetch("DB_HOST", "localhost"),
+        :user => ENV.fetch("DB_USER"),
+        :password => ENV.fetch("DB_PASSWORD"),
+        :dbname => ENV.fetch("DB_NAME")
+    )
 
 ############
 # ホーム画面 #
@@ -50,7 +55,7 @@ post '/random' do
     client.exec_params("INSERT INTO randoms (comment)
     VALUES ($1)",
     [comment]
-    )     
+    ) 
     return redirect '/'
 end
 
